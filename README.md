@@ -39,11 +39,11 @@
 
 ### Backend (Python)
 1. Install dependencies:
+```bash
 pip install -r requirements.txt
 Ensure Tesseract OCR is installed and update the path in main.py:
 
 python
-bash
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 Run the FastAPI server:
 
@@ -61,15 +61,6 @@ npm install
 Run the Angular dev server:
 
 bash
+Copier le code
 ng serve
 Open http://localhost:4200 in your browser.
-
-🔍 How It Works
-Upload a CV (PDF or image).
-
-The backend extracts text using OCR and parses it.
-
-Structured CV data is returned in JSON.
-
-Recruiters can auto-fill forms or integrate with HR systems.
-
