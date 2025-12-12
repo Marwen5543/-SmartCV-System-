@@ -73,39 +73,3 @@ Structured CV data is returned in JSON.
 
 Recruiters can auto-fill forms or integrate with HR systems.
 
-📋 Example Output
-json
-{
-  "personalInfo": {
-    "fullName": "John Doe",
-    "email": "john.doe@example.com",
-    "phone": "+123456789",
-    "linkedin": "https://linkedin.com/in/johndoe",
-    "portfolio": "https://github.com/johndoe",
-    "address": "Paris, France",
-    "summary": "Experienced software engineer with expertise in AI and full-stack development."
-  },
-  "experiences": [
-    {
-      "position": "Software Engineer",
-      "company": "TechCorp",
-      "startDate": "2022-01",
-      "endDate": "2024-06",
-      "current": false,
-      "description": "• Developed AI-powered applications..."
-    }
-  ],
-  "education": [
-    {
-      "institution": "ESPRIT Engineering School",
-      "degree": "BSc in Computer Science",
-      "field": "Computer Science",
-      "startDate": "2018",
-      "endDate": "2022",
-      "gpa": ""
-    }
-  ],
-  "skills": [{"name": "Python"}, {"name": "Angular"}, {"name": "Machine Learning"}],
-  "languages": [{"language": "English", "proficiency": "Professional"}],
-  "certifications": [{"name": "AWS Certified Developer", "issuer": "Amazon", "date": ""}]
-}
