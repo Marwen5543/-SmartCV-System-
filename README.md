@@ -39,33 +39,28 @@
 
 ### Backend (Python)
 1. Install dependencies:
-```bash
 pip install -r requirements.txt
 Ensure Tesseract OCR is installed and update the path in main.py:
 
 python
-Copier le code
+bash
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 Run the FastAPI server:
 
 bash
-Copier le code
 python main.py
 Frontend (Angular)
 Navigate to the frontend folder:
 
 bash
-Copier le code
 cd smartcv-frontend
 Install dependencies:
 
 bash
-Copier le code
 npm install
 Run the Angular dev server:
 
 bash
-Copier le code
 ng serve
 Open http://localhost:4200 in your browser.
 
@@ -80,7 +75,6 @@ Recruiters can auto-fill forms or integrate with HR systems.
 
 📋 Example Output
 json
-Copier le code
 {
   "personalInfo": {
     "fullName": "John Doe",
