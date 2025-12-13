@@ -1,0 +1,17 @@
+<div class="upload-container">
+  <h2>SmartCV Auto-Fill 🚀</h2>
+
+  <!-- File Input -->
+  <input type="file" (change)="onFileSelected($event)" class="file-input" />
+
+  <!-- Upload Button -->
+  <button type="button" (click)="onUpload()" 
+          [disabled]="!selectedFile" 
+          class="btn-upload">
+    Upload Resume
+  </button>
+
+  <!-- Messages -->
+  <h3 class="success-msg" *ngIf="message">{{ message }}</h3>
+  <h3 class="error-msg" *ngIf="errorMsg">{{ errorMsg }}</h3>
+</div>

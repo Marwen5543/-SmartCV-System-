@@ -1,0 +1,62 @@
+.upload-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.upload-container h2 {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.file-input-group {
+  margin-bottom: 1rem;
+}
+
+.file-input {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+}
+
+.btn-upload {
+  padding: 0.7rem 1.5rem;
+  background-color: #667eea;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-upload:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.btn-upload:hover:not(:disabled) {
+  background-color: #5a67d8;
+}
+
+.message-group {
+  margin-top: 1rem;
+}
+
+.success-msg {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.error-msg {
+  color: #f44336;
+  font-weight: 600;
+}

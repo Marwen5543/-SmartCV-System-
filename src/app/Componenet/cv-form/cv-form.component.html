@@ -1,0 +1,441 @@
+<div class="cv-form-container">
+  <!-- CV Form -->
+  <form [formGroup]="cvForm" (ngSubmit)="onSubmit()" class="cv-form">
+    
+    <!-- Personal Information Section -->
+    <div class="form-section">
+      <h2 class="section-title">
+        <i class="icon-user"></i>
+        Personal Information
+      </h2>
+      
+      <div formGroupName="personalInfo" class="form-grid">
+        <div class="form-group full-width">
+          <label for="fullName">Full Name *</label>
+          <input 
+            id="fullName"
+            type="text" 
+            formControlName="fullName" 
+            placeholder="John Doe"
+            class="form-control"
+          />
+          <span class="error" *ngIf="cvForm.get('personalInfo.fullName')?.invalid && cvForm.get('personalInfo.fullName')?.touched">
+            Full name is required
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            id="email"
+            type="email" 
+            formControlName="email" 
+            placeholder="john@example.com"
+            class="form-control"
+          />
+          <span class="error" *ngIf="cvForm.get('personalInfo.email')?.invalid && cvForm.get('personalInfo.email')?.touched">
+            Valid email is required
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input 
+            id="phone"
+            type="tel" 
+            formControlName="phone" 
+            placeholder="+1 234 567 8900"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group full-width">
+          <label for="address">Address</label>
+          <input 
+            id="address"
+            type="text" 
+            formControlName="address" 
+            placeholder="City, Country"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="linkedin">LinkedIn</label>
+          <input 
+            id="linkedin"
+            type="url" 
+            formControlName="linkedin" 
+            placeholder="https://linkedin.com/in/johndoe"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="portfolio">Portfolio/Website</label>
+          <input 
+            id="portfolio"
+            type="url" 
+            formControlName="portfolio" 
+            placeholder="https://johndoe.com"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group full-width">
+          <label for="summary">Professional Summary</label>
+          <textarea 
+            id="summary"
+            formControlName="summary" 
+            rows="4"
+            placeholder="Brief description of your professional background..."
+            class="form-control"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work Experience Section -->
+    <div class="form-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <i class="icon-briefcase"></i>
+          Work Experience
+        </h2>
+        <button type="button" (click)="addExperience()" class="btn-add">
+          <i class="icon-plus"></i> Add Experience
+        </button>
+      </div>
+
+      <div formArrayName="experiences">
+        <div *ngFor="let exp of experiences.controls; let i = index" 
+             [formGroupName]="i" 
+             class="array-item">
+          <div class="array-header">
+            <h3>Experience {{ i + 1 }}</h3>
+            <button 
+              type="button" 
+              (click)="removeExperience(i)" 
+              class="btn-remove"
+              [disabled]="experiences.length === 1"
+            >
+              <i class="icon-x"></i>
+            </button>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Company *</label>
+              <input 
+                type="text" 
+                formControlName="company" 
+                placeholder="Company Name"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Position *</label>
+              <input 
+                type="text" 
+                formControlName="position" 
+                placeholder="Job Title"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Start Date *</label>
+              <input 
+                type="month" 
+                formControlName="startDate" 
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>End Date</label>
+              <input 
+                type="month" 
+                formControlName="endDate" 
+                class="form-control"
+              />
+
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label>
+                <input 
+                  type="checkbox" 
+                  formControlName="current"
+                />
+                Currently working here
+              </label>
+            </div>
+
+            <div class="form-group full-width">
+              <label>Description</label>
+              <textarea 
+                formControlName="description" 
+                rows="3"
+                placeholder="Describe your responsibilities and achievements..."
+                class="form-control"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="form-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <i class="icon-education"></i>
+          Education
+        </h2>
+        <button type="button" (click)="addEducation()" class="btn-add">
+          <i class="icon-plus"></i> Add Education
+        </button>
+      </div>
+
+      <div formArrayName="education">
+        <div *ngFor="let edu of education.controls; let i = index" 
+             [formGroupName]="i" 
+             class="array-item">
+          <div class="array-header">
+            <h3>Education {{ i + 1 }}</h3>
+            <button 
+              type="button" 
+              (click)="removeEducation(i)" 
+              class="btn-remove"
+              [disabled]="education.length === 1"
+            >
+              <i class="icon-x"></i>
+            </button>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Institution *</label>
+              <input 
+                type="text" 
+                formControlName="institution" 
+                placeholder="University Name"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Degree *</label>
+              <input 
+                type="text" 
+                formControlName="degree" 
+                placeholder="Bachelor's, Master's, PhD"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Field of Study *</label>
+              <input 
+                type="text" 
+                formControlName="field" 
+                placeholder="Computer Science"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Start Date</label>
+              <input 
+                type="month" 
+                formControlName="startDate" 
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>End Date</label>
+              <input 
+                type="month" 
+                formControlName="endDate" 
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>GPA</label>
+              <input 
+                type="text" 
+                formControlName="gpa" 
+                placeholder="3.8/4.0"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="form-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <i class="icon-award"></i>
+          Skills
+        </h2>
+        <button type="button" (click)="addSkill()" class="btn-add">
+          <i class="icon-plus"></i> Add Skill
+        </button>
+      </div>
+
+      <div formArrayName="skills" class="skills-grid">
+        <div *ngFor="let skill of skills.controls; let i = index" 
+             [formGroupName]="i" 
+             class="skill-item">
+          <input 
+            type="text" 
+            formControlName="name" 
+            placeholder="e.g., JavaScript, Python"
+            class="form-control"
+          />
+          <button 
+            type="button" 
+            (click)="removeSkill(i)" 
+            class="btn-remove-small"
+          >
+            <i class="icon-x"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Languages Section -->
+    <div class="form-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <i class="icon-globe"></i>
+          Languages
+        </h2>
+        <button type="button" (click)="addLanguage()" class="btn-add">
+          <i class="icon-plus"></i> Add Language
+        </button>
+      </div>
+
+      <div formArrayName="languages">
+        <div *ngFor="let lang of languages.controls; let i = index" 
+             [formGroupName]="i" 
+             class="language-item">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Language *</label>
+              <input 
+                type="text" 
+                formControlName="language" 
+                placeholder="English"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Proficiency *</label>
+              <select formControlName="proficiency" class="form-control">
+                <option value="">Select level</option>
+                <option value="Native">Native</option>
+                <option value="Fluent">Fluent</option>
+                <option value="Professional">Professional</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Basic">Basic</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <button 
+                type="button" 
+                (click)="removeLanguage(i)" 
+                class="btn-remove"
+                [disabled]="languages.length === 1"
+              >
+                <i class="icon-x"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <div class="form-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <i class="icon-certificate"></i>
+          Certifications
+        </h2>
+        <button type="button" (click)="addCertification()" class="btn-add">
+          <i class="icon-plus"></i> Add Certification
+        </button>
+      </div>
+
+      <div formArrayName="certifications">
+        <div *ngFor="let cert of certifications.controls; let i = index" 
+             [formGroupName]="i" 
+             class="array-item">
+          <div class="array-header">
+            <h3>Certification {{ i + 1 }}</h3>
+            <button 
+              type="button" 
+              (click)="removeCertification(i)" 
+              class="btn-remove"
+              [disabled]="certifications.length === 1"
+            >
+              <i class="icon-x"></i>
+            </button>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Certification Name *</label>
+              <input 
+                type="text" 
+                formControlName="name" 
+                placeholder="AWS Certified Developer"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Issuing Organization</label>
+              <input 
+                type="text" 
+                formControlName="issuer" 
+                placeholder="Amazon Web Services"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Date Obtained</label>
+              <input 
+                type="month" 
+                formControlName="date" 
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <button type="button" (click)="resetForm()" class="btn-secondary">
+        Reset Form
+      </button>
+      <button type="submit" class="btn-primary">
+        <i class="icon-save"></i>
+        Save CV
+      </button>
+    </div>
+  </form>
+</div>
